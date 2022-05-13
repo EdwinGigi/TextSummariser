@@ -1,1 +1,1 @@
-# TextSummariser Flask application built using Python.
+# TextSummariser Flask application built as my Final Year Development Project - De Montfort University
