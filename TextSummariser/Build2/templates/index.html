@@ -1,58 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- CSS Imports-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/w3schools.css">
-    <link rel="stylesheet" href="/static/css/custom.css">
-    <link href="/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    
-    <!--Darkmode Imports-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/main.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Imports-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/main.css">
 
-    <!-- Font Imports-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
-    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="/static/css/w3schools.css">
 
-    <style>
-    h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
-    body {font-family: "Open Sans"}
-    </style>
-    <title>Text Summarisation Web Application using A.I & NLP</title>
-  </head>
+  
+  <link href="/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+  h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+  body {font-family: "Open Sans"}
+  </style>
+  <title>Text Summarisation Web Application using A.I & NLP</title>
+</head>
 
 <body>
 
 <!-- Navbar (sit on top) -->
-<div class="w3-top navbar">
-  <div class="w3-bar w3-padding w3-border w3-round-xxlarge" style=letter-spacing:4px;">
-    
+<div class="w3-top" style="background-color:rgb(138, 184, 202);">
+  <div class="w3-bar w3-padding w3-round" style=letter-spacing:4px;">
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right w3-round" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <div class="w3-bar-item w3-padding-large w3-round custom-control custom-switch">
-      <input type="checkbox" class="w3-bar-item custom-control-input" id="darkModeSwitch">
-      <label class="custom-control-label w3-center w3-text-grey" for="darkModeSwitch"><b>Dark Mode</b></label>
-    </div>  
-    <a href="{{url_for('index')}}" class="w3-bar-item w3-padding w3-button w3-round-large w3-hover-grey" style="text-decoration: none;"> Development Project - P2508298</a>
+    <a href="{{url_for('index')}}" class="w3-bar-item w3-button w3-round w3-hover-light-grey">Development Project - P2508298</a>
+    <button onclick="darkModeSwitch()">Dark mode demo</button>
     <!-- Right-sided navbar links. Hide them on small screens -->
     <div class="w3-right w3-mobile w3-hide-small">
-      <a href="{{url_for('index')}}" class="w3-bar-item w3-round-large w3-button w3-leftbar w3-border-blue w3-hover-grey" style="text-decoration: none;">Home</a>
-      <a href="{{url_for('compare_summary')}}" class="w3-bar-item w3-round w3-button w3-hover-grey" style="text-decoration: none;">Other Summarisers</a>
-      <a href="{{url_for('about')}}" class="w3-bar-item w3-round w3-button w3-hover-grey" style="text-decoration: none;">About</a>
+      <a href="{{url_for('index')}}" class="w3-bar-item w3-round w3-button w3-hover-light-grey">Home</a>
+      <a href="{{url_for('compare_summary')}}" class="w3-bar-item w3-round w3-button w3-hover-light-grey">Other Summarisers</a>
+      <a href="{{url_for('about')}}" class="w3-bar-item w3-round w3-button w3-hover-light-grey">About</a>
     </div>
   </div>
 </div>
 
 <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-<div id="navDemo" class="w3-right w3-animate-top w3-bar-block w3-border-white w3-round-xlarge w3-light-grey w3-hide w3-hide-large w3-hide-medium w3-top" style="background-color:rgba(0, 85, 119, 0.842);">
-  <a href="{{url_for('index')}}" class="w3-round w3-bar-item w3-button w3-leftbar w3-border-blue w3-padding-large" onclick="myFunction()" style="text-decoration: none;">Home</a>
-  <a href="{{url_for('compare_summary')}}" class="w3-round w3-bar-item w3-button w3-padding-large" onclick="myFunction()" style="text-decoration: none;">Other Summarisers</a>
-  <a href="{{url_for('about')}}" class="w3-round w3-bar-item w3-button w3-padding-large" onclick="myFunction()" style="text-decoration: none;">About</a>
+<div id="navDemo" class="w3-right w3-animate-bottom w3-bar-block w3-light-grey w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px; background-color:rgba(0, 85, 119, 0.842);">
+  <a href="{{url_for('index')}}" class="w3-round w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Home</a>
+  <a href="{{url_for('compare_summary')}}" class="w3-round w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Other Summarisers</a>
+  <a href="{{url_for('about')}}" class="w3-round w3-bar-item w3-button w3-padding-large" onclick="myFunction()">About</a>
 </div>
     
   <!-- w3-content defines a container for fixed size centered content, 
@@ -65,7 +58,7 @@
       <h6 class="w3-padding">With summarisation techniques using <span class="w3-tag w3-padding">spaCy, Gensim, NLTK & Sumy NLP libraries</span></h6>
     </header>
   </div>
-
+  
   <!-- Start of Main Section -->
   <div class="w3-container w3-center">
       <div class="section">
@@ -74,12 +67,12 @@
         <div class="row">
           <div class="input-field col s12 m10 w3-center">
             <div class="icon-block">
-              <h2 class="center"> <span class="w3-margin-top w3-xxxlarge material-symbols-outlined"> edit_note </span> </i></h2>
+              <h2 class="center brown-text"><i class="material-icons">chrome_reader_mode</i></h2>
                 <form method="POST" action="/analyze">
                   <textarea name="rawtext" cols="3" rows="5" class="form-control" required="true" placeholder="Enter Text Here"></textarea>
                   <br/>
-                  <button class="btn btn-small waves-effect waves-light red lighten-1" type="reset">Clear</button>
-                  <button class="btn btn-small waves-effect waves-light light-blue lighten-1" type="submit">Summarise</button>
+                  <button class="btn btn-small waves-effect waves-light light-blue lighten-1" type="reset">Clear</button>
+                  <button class="btn btn-small waves-effect waves-light purple lighten-1" type="submit">Summarise</button>
                 </form>
             </div>
           </div>
@@ -88,11 +81,11 @@
         <div class="row">
           <div class="input-field col s12 m10 w3-center">
             <div class="icon-block">
-              <h2 class="center"><i class="material-icons"> <span class="w3-margin-top w3-xxxlarge material-symbols-outlined"> link </span> </i></h2>
+              <h2 class="center brown-text"><i class="material-icons">chrome_reader_mode</i></h2>
               <form method="POST" action="/analyze_url">
-                <input type="text" class="w3-white" name="raw_url" placeholder="Enter URL Here" required="true">
-                <button class="btn btn-small waves-effect waves-light red lighten-1" type="reset">Clear</button>
-                <button class="btn btn-small waves-effect waves-light light-blue lighten-1" type="submit">Summarise</button>
+                <input type="text" name="raw_url" placeholder="Enter URL Here" required="true">
+                <button class="btn btn-small waves-effect waves-light light-blue lighten-1" type="reset">Clear</button>
+                <button class="btn btn-small waves-effect waves-light purple lighten-1" type="submit">Summarise</button>
               </form>
             </div>
           </div>
@@ -107,22 +100,22 @@
     <div class="w3-container white-text">
   
         <!--   Icon Section   -->
-        <div class="row w3-border grey darken-3 w3-round-large">
+        <div class="row w3-border w3-round-large">
           <div class="col s12 m6">
-            <div class="icon-block w3-round-large">
-              <h2 class="center"><i <span class="w3-margin-top w3-xxxlarge material-symbols-outlined"> edit_note </span> </i></h2>
-              <h5 class="w3-xlarge center">Your Text</h5>
+            <div class="icon-block w3-dark-grey w3-round-large">
+              <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+              <h5 class="center">Your Text</h5>
               <p>Reading Time: <span style="color:#0091EA;">{{ final_reading_time }} min </span></p>
               <p class="light">{{ctext}}</p>
-              <div class="w3-border-dark-grey grey darken-3 alert alert-info white-text" role="alert"><p>Time Elapsed: <span style="color:#0090ea8e;"> {{ final_time }} mins </span></p><br/>
+              <div class="w3-dark-grey w3-border-dark-grey alert alert-info" role="alert"><p>Time Elapsed: <span style="color:#0090ea8e;"> {{ final_time }} mins </span></p><br/>
               </div>
             </div>
           </div>
 
-          <div class="col s12 m6 grey darken-4 w3-round-large">
+          <div class="col s12 m6 grey darken-3 w3-round-large">
             <div class="icon-block w3-round-large">
-              <h2 class="center"> <i <span class="w3-margin-top w3-xxxlarge material-symbols-outlined"> description </span></i> </h2>
-              <h5 class="w3-xlarge center">Your Text Summarised</h5>
+              <h2 class="center brown-text"><i class="material-icons">chrome_reader_mode</i></h2>
+              <h5 class="center">Your Text Summarised</h5>
               <div class="" role="alert">
                 <p>Reading Time: <span style="color:#0091EA;">{{ summary_reading_time }} min </span></p>
               </div>
@@ -139,30 +132,36 @@
         
 
   <!-- Footer -->
-  <footer class="w3-container w3-center" style="padding:32px">
-    <a href="#" class="w3-button  w3-black w3-padding-large w3-margin-bottom w3-round-large"><i class="fa fa-arrow-up w3-margin-right"></i>Back to the top</a>
+  <footer class="w3-container w3-dark-grey w3-center" style="padding:32px">
+    <a href="#" class="w3-button  w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Back to the top</a>
       <div class="w3-container" id="aboutapp">
           <div class="col l3 s12">
-            <h5 class="w3-padding">Connect With Me</h5>
+            <h5 class="white-text w3-padding">Connect With Me</h5>
             <ul>
-            <a href="https://www.linkedin.com/in/edwin-gigi/" target="_blank" class="w3-padding"> <i class="fa fa-linkedin fa-4x"></i> </a>
-            <a href="https://github.com/EdwinGigi" target="_blank" class="w3-padding"> <i class="fa fa-github-square fa-4x"></i> </a>
+            <a href="" target="_blank" class="white-text w3-padding"> <i class="fa fa-linkedin fa-4x"></i> </a>
+            <a href="" target="_blank" class="white-text w3-padding"> <i class="fa fa-github-square fa-4x"></i> </a>
             </ul>
           </div>
       </div>
       <div class="footer-copyright">
         <div class="w3-container">
-        Made by <a class="text-lighten-3">Edwin Gigi - P2508298 - De Montfort University</a><br/>
-        <a> Copyright © 2022</a>
+        Made by <a class="white-text text-lighten-3" href="">Edwin Gigi - P2508298 - De Montfort University</a><br/>
+        <a class="white-text text-lighten-3" href="""></a>
         <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
         </div>
       </div>
     </footer>
 
-  
-  <!-- Function Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- Bootstrap imports -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/static/js/main.js"></script>
 
+  
+  <!-- Function Scripts
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   -->
   <script>
 
   // Used to toggle the menu on small screens when clicking on the menu button
@@ -174,11 +173,12 @@
       x.className = x.className.replace(" w3-show", "");
     }
   }
-  </script>
 
-  <!--Darkmode JavaScripts-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="/static/js/main.js"></script>
+  function likeFunction(x) {
+    x.style.fontWeight = "bold";
+    x.innerHTML = "✓ Liked";
+  }
+  </script>
 
 
 </body>

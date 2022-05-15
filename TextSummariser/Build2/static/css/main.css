@@ -1,4 +1,8 @@
 /* Sample of base css */
+html {
+    margin: 50px;
+    scroll-behavior: smooth;
+}
 
 html[theme="light"] {
     --link-color: rgb(0, 112, 201);
