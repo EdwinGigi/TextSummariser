@@ -1,7 +1,7 @@
-# NLP Pkgs
+# NLP Pkgs for spaCy
 import spacy 
-nlp = spacy.load('en')
-# Pkgs for Normalizing Text
+nlp = spacy.load('en') # Load English Language Model
+# Pkgs for Normalising Text
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 # Import Heapq for Finding the Top N Sentences
@@ -26,7 +26,7 @@ def text_summariser(raw_docx):
     maximum_frequncy = max(word_frequencies.values())
 
     for word in word_frequencies.keys():  
-        word_frequencies[word] = (word_frequencies[word]/maximum_frequncy)
+        word_frequencies[word] = (word_frequencies[word]/maximum_frequncy) #Normalising the word frequencies
     # Sentence Tokens
     sentence_list = [ sentence for sentence in docx.sents ]
 
@@ -35,14 +35,14 @@ def text_summariser(raw_docx):
     for sent in sentence_list:  
         for word in sent:
             if word.text.lower() in word_frequencies.keys():
-                if len(sent.text.split(' ')) < 30:
+                if len(sent.text.split(' ')) < 30: #Setting the maximum length of a sentence to be 30 words
                     if sent not in sentence_scores.keys():
                         sentence_scores[sent] = word_frequencies[word.text.lower()]
                     else:
                         sentence_scores[sent] += word_frequencies[word.text.lower()]
 
 
-    summarized_sentences = nlargest(7, sentence_scores, key=sentence_scores.get)
+    summarized_sentences = nlargest(10, sentence_scores, key=sentence_scores.get) #Getting the top 10 sentences
     final_sentences = [ w.text for w in summarized_sentences ]
     summary = ' '.join(final_sentences)
     print("Original Document\n")
