@@ -119,9 +119,5 @@ def comparer():
 def about():
 	return render_template('about.html')
 
-@app.route('/darkmode')
-def darkmode():
-	return render_template('darkmode.html')
-
 if __name__ == '__main__':
 	app.run(debug=True)
