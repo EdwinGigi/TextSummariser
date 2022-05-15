@@ -1,1 +1,2 @@
 # TextSummariser Flask application built as my Final Year Development Project - De Montfort University
+# This application uses Extractive summarisation techniques to summarise user entered text data or from fetched text data from a URL.
