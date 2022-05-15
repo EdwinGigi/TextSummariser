@@ -52,3 +52,4 @@ def text_summariser(raw_docx):
     print(summary)
     print("Total Length:",len(summary))
     
+    #Edwin Gigi

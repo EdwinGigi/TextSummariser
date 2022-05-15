@@ -47,3 +47,4 @@ def text_summariser(raw_docx):
     summary = ' '.join(final_sentences)
     return summary
     
+    #Edwin Gigi
