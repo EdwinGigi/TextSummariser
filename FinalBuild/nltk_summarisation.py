@@ -3,7 +3,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 import heapq  
 
-def nltk_summarizer(raw_text):
+def nltk_summariser(raw_text):
 	stopWords = set(stopwords.words("english"))
 	word_frequencies = {}  
 	for word in nltk.word_tokenize(raw_text):  

@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 from flask import Flask,render_template,url_for,request
 
 #Import NLP Packages
-from spacy_summarization import text_summarizer
-from nltk_summarization import nltk_summarizer
+from spacy_summarisation import text_summariser
+from nltk_summarisation import nltk_summariser
 from gensim.summarization import summarize
 
 #Import Time Package
@@ -56,13 +56,13 @@ def index():
 	return render_template('index.html')
 
 
-@app.route('/analyze',methods=['GET','POST'])
-def analyze():
+@app.route('/analyse',methods=['GET','POST'])
+def analyse():
 	start = time.time()
 	if request.method == 'POST':
 		rawtext = request.form['rawtext']
 		#Summarisation
-		final_summary = text_summarizer(rawtext)
+		final_summary = text_summariser(rawtext)
 		#Reading Time Check
 		final_reading_time = readingTime(rawtext)
 		summary_reading_time = readingTime(final_summary)
@@ -70,8 +70,8 @@ def analyze():
 		final_time = end-start
 	return render_template('index.html',ctext=rawtext,final_summary=final_summary,final_time=final_time,final_reading_time=final_reading_time,summary_reading_time=summary_reading_time)
 
-@app.route('/analyze_url',methods=['GET','POST'])
-def analyze_url():
+@app.route('/analyse_url',methods=['GET','POST'])
+def analyse_url():
 	start = time.time()
 	if request.method == 'POST':
 		#Get the URL from the form
@@ -79,7 +79,7 @@ def analyze_url():
 		rawtext = get_text(raw_url)
 		#Reading Time Check
 		final_reading_time = readingTime(rawtext)
-		final_summary = text_summarizer(rawtext)
+		final_summary = text_summariser(rawtext)
 		summary_reading_time = readingTime(final_summary)
 		end = time.time()
 		final_time = end-start
@@ -97,13 +97,13 @@ def comparer():
 	if request.method == 'POST':
 		rawtext = request.form['rawtext']
 		final_reading_time = readingTime(rawtext)
-		final_summary_spacy = text_summarizer(rawtext)
+		final_summary_spacy = text_summariser(rawtext)
 		summary_reading_time = readingTime(final_summary_spacy)
-		# Gensim Summarizer
+		# Gensim Summariser
 		final_summary_gensim = summarize(rawtext)
 		summary_reading_time_gensim = readingTime(final_summary_gensim)
 		# NLTK
-		final_summary_nltk = nltk_summarizer(rawtext)
+		final_summary_nltk = nltk_summariser(rawtext)
 		summary_reading_time_nltk = readingTime(final_summary_nltk)
 		# Sumy
 		final_summary_sumy = sumy_summary(rawtext)
