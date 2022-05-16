@@ -1,0 +1,12 @@
+beautifulsoup4               4.10.0
+bs4                          0.0.1
+Flask                        2.1.2
+gensim                       3.6.0
+gensim-sum-ext               0.1.2
+nltk                         3.6.7
+spacy                        3.2.1
+spacy-legacy                 3.0.8
+spacy-loggers                1.0.1
+sumy                         0.10.0
+thinc                        8.0.13
+urllib3                      1.26.9
