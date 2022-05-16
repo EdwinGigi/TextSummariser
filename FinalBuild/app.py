@@ -40,7 +40,7 @@ def sumy_summary(docx):
 # Reading Time Function
 def readingTime(mytext):
 	total_words = len([ token.text for token in nlp(mytext)])
-	estimatedTime = total_words/200.0
+	estimatedTime = total_words/225.0
 	return estimatedTime
 
 # Read Text data From a Url
@@ -51,7 +51,7 @@ def get_text(url):
 	fetched_text = ''.join(map(lambda p:p.text,soup.find_all('p')))
 	return fetched_text
 
-#Functions
+#Route Page Functions
 @app.route('/')
 def index():
 	return render_template('index.html')

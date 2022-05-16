@@ -32,7 +32,7 @@ def nltk_summariser(raw_text):
 
 
 
-	summary_sentences = heapq.nlargest(10, sentence_scores, key=sentence_scores.get) #Getting the top 10 sentences
+	summary_sentences = heapq.nlargest(20, sentence_scores, key=sentence_scores.get) #Getting the top 20 sentences
 
 	summary = ' '.join(summary_sentences)  
 	return summary
