@@ -44,8 +44,8 @@ def readingTime(mytext):
 	return estimatedTime
 
 # Read Text data From a Url
-def get_text(url):
-	page = urlopen(url)
+def get_text(url, headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'}):
+	page = urlopen(url, timeout=10).read()
 	soup = BeautifulSoup(page)
 	#Finds all the paragraph tags in the page of the url and stores them in a list
 	fetched_text = ''.join(map(lambda p:p.text,soup.find_all('p')))
