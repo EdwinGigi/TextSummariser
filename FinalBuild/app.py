@@ -102,7 +102,7 @@ def comparer():
 		final_summary_spacy = text_summariser(rawtext)
 		summary_reading_time = readingTime(final_summary_spacy)
 		# Gensim Summariser
-		final_summary_gensim = summarize(rawtext)
+		final_summary_gensim = summarize(rawtext, ratio=0.2)
 		summary_reading_time_gensim = readingTime(final_summary_gensim)
 		# NLTK Summariser
 		final_summary_nltk = nltk_summariser(rawtext)
