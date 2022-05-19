@@ -1,6 +1,6 @@
 # NLP Pkgs for spaCy 
 import spacy 
-nlp = spacy.load('en_core_web_sm') # Load English Language Model
+nlp = spacy.load('en_core_web_lg') # Load English Language Model
 # Pkgs for Normalising Text
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation

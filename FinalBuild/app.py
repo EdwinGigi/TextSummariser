@@ -12,7 +12,7 @@ import time
 
 #Import Default NLP Model
 import spacy
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_lg")
 
 #App Name
 app = Flask(__name__)
@@ -31,7 +31,7 @@ from sumy.summarizers.lex_rank import LexRankSummarizer
 def sumy_summary(docx): 
 	parser = PlaintextParser.from_string(docx,Tokenizer("english")) 
 	lex_summarizer = LexRankSummarizer() 
-	summary = lex_summarizer(parser.document,3)
+	summary = lex_summarizer(parser.document, 7)
 	summary_list = [str(sentence) for sentence in summary]
 	result = ' '.join(summary_list)
 	return result
@@ -40,12 +40,12 @@ def sumy_summary(docx):
 # Reading Time Function
 def readingTime(mytext):
 	total_words = len([ token.text for token in nlp(mytext)])
-	estimatedTime = total_words/225.0
+	estimatedTime = round((total_words/228),2)
 	return estimatedTime
 
 # Read Text data From a Url
 def get_text(url, headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'}):
-	page = urlopen(url, timeout=10).read()
+	page = urlopen(url, timeout=10)
 	soup = BeautifulSoup(page)
 	#Finds all the paragraph tags in the page of the url and stores them in a list
 	fetched_text = ''.join(map(lambda p:p.text,soup.find_all('p')))
